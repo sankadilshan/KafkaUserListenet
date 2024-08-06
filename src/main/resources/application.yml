@@ -1,0 +1,24 @@
+server:
+  port: 8081
+spring:
+  application:
+    name: userListener
+  kafka:
+    properties:
+      sasl:
+        mechanism: PLAIN
+        jaas:
+          config: org.apache.kafka.common.security.plain.PlainLoginModule required username='RTS4IKRVDKQWKWUM' password='0cJPaS4EWh9fkmevGCFU51sZbxrvgZk0w28X8yeVaFN3IYa/gKWqhwJsCr37jQqm';
+      security:
+        protocol: SASL_SSL
+      session:
+        timeout.ms: 45000
+    consumer:
+      bootstrap-servers: pkc-12576z.us-west2.gcp.confluent.cloud:9092
+      key-serializer: org.apache.kafka.common.serialization.StringDeserializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonDeserializer
+      group-id:
+        user: sanka.dilshan.user.group.v0
+    listener.ack-mode: manual
+user.topic: sanka.dilshan.users.v0
+
